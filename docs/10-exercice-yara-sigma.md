@@ -27,7 +27,7 @@ YARA permet d'écrire des règles de détection basées sur des motifs (chaînes
 - **YARA Playground / Online tester** : permet d'écrire et tester une règle sans installation locale
 - Éditeur avec coloration syntaxique pour repérer rapidement les erreurs de syntaxe
 
-📸 *Capture d'écran : éditeur YARA en ligne avec une règle en cours d'écriture*
+📸 _Capture d'écran : éditeur YARA en ligne avec une règle en cours d'écriture_
 `![Éditeur YARA en ligne](../screenshots/10-yara-sigma/editeur-yara-online.png)`
 
 ### Exemple de règle YARA simple
@@ -59,16 +59,16 @@ yara -r rules/yara/YourRule.yar samples/
 - `-r` : recherche récursive dans le dossier `samples/`
 - Le nom du fichier scanné s'affiche à côté du nom de la règle si elle matche
 
-📸 *Capture d'écran : résultat de `yara -r` en ligne de commande sur le dossier samples*
+📸 _Capture d'écran : résultat de `yara -r` en ligne de commande sur le dossier samples_
 `![Résultat scan YARA CLI](../screenshots/10-yara-sigma/yara-cli-resultat.png)`
 
 ### Débogage courant
 
-| Erreur | Cause probable |
-|---|---|
-| `syntax error, unexpected...` | Accolade ou parenthèse manquante, section `condition:` mal formée |
-| Règle qui ne matche jamais | Chaîne mal orthographiée, `nocase` manquant, condition trop stricte |
-| Règle qui matche tout | Condition trop permissive (ex: `any of them` sur une seule chaîne courante) |
+| Erreur                        | Cause probable                                                              |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| `syntax error, unexpected...` | Accolade ou parenthèse manquante, section `condition:` mal formée           |
+| Règle qui ne matche jamais    | Chaîne mal orthographiée, `nocase` manquant, condition trop stricte         |
+| Règle qui matche tout         | Condition trop permissive (ex: `any of them` sur une seule chaîne courante) |
 
 ## Partie 2 — Règles Sigma
 
@@ -80,7 +80,7 @@ Sigma est un format générique de règles de détection pour les logs (indépen
 
 - **Uncoder.io** (ou équivalent) : colle une règle Sigma YAML, choisis la plateforme cible, récupère la requête convertie.
 
-📸 *Capture d'écran : conversion d'une règle Sigma vers une requête cible via un convertisseur en ligne*
+📸 _Capture d'écran : conversion d'une règle Sigma vers une requête cible via un convertisseur en ligne_
 `![Conversion Sigma en ligne](../screenshots/10-yara-sigma/sigma-conversion-online.png)`
 
 ### Exemple de règle Sigma simple
@@ -91,19 +91,19 @@ id: 8e1c8f00-0000-4c00-9000-000000000001
 status: experimental
 description: Détecte l'exécution de PowerShell avec une commande encodée en base64
 logsource:
-    category: process_creation
-    product: windows
+  category: process_creation
+  product: windows
 detection:
-    selection:
-        Image|endswith: '\powershell.exe'
-        CommandLine|contains:
-            - '-EncodedCommand'
-            - '-enc '
-    condition: selection
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - "-EncodedCommand"
+      - "-enc "
+  condition: selection
 level: medium
 tags:
-    - attack.execution
-    - attack.t1059.001
+  - attack.execution
+  - attack.t1059.001
 ```
 
 ### Tester la règle Sigma
@@ -112,7 +112,7 @@ tags:
 2. Convertir la règle vers le format cible avec l'outil en ligne.
 3. Si tu as déjà des événements Sysmon dans Wazuh (voir module 5), rejouer manuellement la requête convertie sur le dashboard pour vérifier qu'elle matche bien les événements attendus (ex : lancement de `notepad.exe` avec une commande encodée simulée).
 
-📸 *Capture d'écran : requête convertie exécutée dans le dashboard Wazuh, résultats correspondants*
+📸 _Capture d'écran : requête convertie exécutée dans le dashboard Wazuh, résultats correspondants_
 `![Requête Sigma convertie testée dans Wazuh](../screenshots/10-yara-sigma/sigma-test-wazuh.png)`
 
 ## Checklist de l'exercice
@@ -132,4 +132,10 @@ tags:
 - Versionner tes règles dans `rules/` (mais jamais les samples malveillants bruts — garder `samples/` hors du dépôt Git, voir `.gitignore`).
 
 ➡️ Étape suivante : Techniques d'analyse des logs (Windows, Linux, Réseau)
-*(Module à ajouter dès que son contenu sera disponible.)*
+_(Module à ajouter dès que son contenu sera disponible.)_
+
+- ➡️ Étape suivante : Techniques d'analyse des logs (Windows, Linux, Réseau)
+- _(Module à ajouter dès que son contenu sera disponible.)_
+
+* ➡️ Étape suivante : [Intégration Suricata + Agent Wazuh](11-integration-suricata.md)
+* _(Module à ajouter dès que son contenu sera disponible.)_

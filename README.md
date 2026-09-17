@@ -3,6 +3,7 @@
 Ce dépôt documente un atelier pratique de déploiement de **Wazuh** (SIEM open source) via l'appliance OVA officielle, sur **VirtualBox**, avec un agent installé sur une machine **Windows 10**.
 
 L'objectif est de fournir un guide reproductible pour :
+
 - Déployer rapidement un serveur Wazuh (manager + indexer + dashboard) via l'OVA
 - Créer une VM Windows 10 comme cible à surveiller
 - Installer et enrôler l'agent Wazuh sur cette VM
@@ -10,14 +11,14 @@ L'objectif est de fournir un guide reproductible pour :
 
 ## 📋 Prérequis
 
-| Élément | Lien / Détail |
-|---|---|
-| VirtualBox (dernière version) | https://www.virtualbox.org/wiki/Downloads |
-| OVA Wazuh officiel | https://documentation.wazuh.com/current/deployment-options/virtual-machine/virtual-machine.html |
-| ISO Windows 10 | https://www.microsoft.com/fr-fr/software-download/windows10ISO |
-| RAM hôte recommandée | 16 Go minimum (8 Go pour Wazuh + 4 Go pour Windows 10) |
-| Espace disque | ~80 Go libres |
-| CPU | Virtualisation (VT-x/AMD-V) activée dans le BIOS |
+| Élément                       | Lien / Détail                                                                                   |
+| ----------------------------- | ----------------------------------------------------------------------------------------------- |
+| VirtualBox (dernière version) | https://www.virtualbox.org/wiki/Downloads                                                       |
+| OVA Wazuh officiel            | https://documentation.wazuh.com/current/deployment-options/virtual-machine/virtual-machine.html |
+| ISO Windows 10                | https://www.microsoft.com/fr-fr/software-download/windows10ISO                                  |
+| RAM hôte recommandée          | 16 Go minimum (8 Go pour Wazuh + 4 Go pour Windows 10)                                          |
+| Espace disque                 | ~80 Go libres                                                                                   |
+| CPU                           | Virtualisation (VT-x/AMD-V) activée dans le BIOS                                                |
 
 ## 📁 Structure du dépôt
 
@@ -44,7 +45,11 @@ wazuh-workshop/
     ├── 06-alertes/
     ├── 08-hash-malware/
     ├── 09-domaine-ip/
-    └── 10-yara-sigma/
+    ├── 10-yara-sigma/
+    └── 11-integration-suricata.md
+
+
+
 ```
 
 ## 🚀 Sommaire de l'atelier
